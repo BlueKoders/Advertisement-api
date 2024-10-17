@@ -1,4 +1,4 @@
-import { Router } from "express.js";
+import { Router } from "express";
 import {registerVendor, loginVendor, logoutVendor, updateVendor, getProfile } from "../controllers/vendor.js";
 
 

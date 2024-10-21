@@ -1,5 +1,5 @@
 import { Router } from "express";
-import {registerVendor, loginVendor, logoutVendor, updateVendor, getProfile } from "../controllers/vendor.js";
+import {registerVendor, loginVendor, logoutVendor, getProfile, updateProfile } from "../controllers/vendor.js";
 
 
 // create routes
@@ -15,7 +15,7 @@ vendorRouter.get('/vendors/me', getProfile)
 
 vendorRouter.post('/vendors/logout', logoutVendor)
 
-vendorRouter.post('/vendors/me', updateVendor)
+vendorRouter.post('/vendors/me', updateProfile)
 
 // export default
 export default vendorRouter;

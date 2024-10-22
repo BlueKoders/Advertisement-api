@@ -100,12 +100,13 @@ export const  userAds = async (req, res, next) => {
       }
 }
 
-export const userAd = async ()=>{
+export const userAd = async (req, res, next)=>{
 try {
-    const {id} = req.params//destructing Adverts from db
-    const advert = await AdvertModel.findById(id);
-    //respond to request
-    res.status(200).json(advert)
+    const advertId = req.cookies.advertId;
+    if (!advertId) return res.status(400).json({ message: 'No advert ID found' });
+
+    await AdvertModel.findById(advertId)
+        .then(advert => res.status(200).json(advert))
 } catch (error) {
     next(error)
 }

@@ -4,12 +4,12 @@ import { toJSON } from "@reis/mongoose-to-json";
 
 
 const advertSchema = new Schema({
-    title: {type: string, required: true},
-    location: {type: string, required: true},
-    description: {type: string, required: true},
-    image: {type: string, required: true},
-    price: {type: string, required: true},
-    category: {type: string, required: true}
+    title: {type: String, required: true},
+    location: {type: String, required: true},
+    description: {type: String, required: true},
+    image: {type: String, required: true},
+    price: {type: String, required: true},
+    category: {type: String, required: true}
 }, {
     timestamps: true
 });

@@ -1,5 +1,6 @@
 //import user model here
 import { UserModel } from "../models/user.js";
+import { AdvertModel } from "../models/advert.js";
 import { userRegisterValidator, userloginValidator,} from "../validators/user.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
@@ -80,13 +81,17 @@ export const userLogout = ()=> {
 
 
 //get all ads
-export const  userAds = (req, res, next) => {
+export const  userAds = async (req, res, next) => {
       try {
           const { filter = "{}", sort = "{}", limit = 10, skip = 0 } = req.query; //filter search
           //fetch ads from database
-          const ads = await 
+          const ads = await AdvertModel.find(JSON.parse(filter))
+              .find(JSON.parse(filter))
+              .sort(JSON.parse(sort))
+          .limit(limit)
+          .skip()
         //respond to user
-      res.status(200).json('Welcome and happy shopping!')
+          res.status(200).json(ads)
       } catch (error) {
         next(error);
       }

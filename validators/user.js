@@ -11,3 +11,8 @@ export const userloginValidator = Joi.object({
     password: Joi.string().required()
 })
 
+//Not so sure logout would need .required()
+export const userlogoutValidator = Joi.object({
+    email: Joi.string(),
+    password: Joi.string()
+})

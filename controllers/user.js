@@ -70,10 +70,21 @@ try {
 }
 };
 
-//user display
+export const userLogout = ()=> {
+    return res.status(200).json({ message: "Logout successful. See you later!" })
+
+    // expressJwt({ secret: process.env.JWT_SECRET, algorithms: ['HS256'] }), (req, res) => {
+    // Logout logic here
+    res.status(200).send({ message: 'Logged out successfully' })
+}
+
+
+//get all ads
 export const  userAds = (req, res, next) => {
       try {
-        //validate user
+          const { filter = "{}", sort = "{}", limit = 10, skip = 0 } = req.query; //filter search
+          //fetch ads from database
+          const ads = await 
         //respond to user
       res.status(200).json('Welcome and happy shopping!')
       } catch (error) {

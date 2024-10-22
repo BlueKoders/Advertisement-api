@@ -1,5 +1,6 @@
 import { expressjwt } from "express-jwt";
 import { VendorModel } from "../models/vendor.js";
+import { UserModel } from "../models/user.js";
 import { permissions } from "../utils/rbac.js";
 
 
@@ -22,7 +23,10 @@ export const hasPermission = (action) => {
             if (permission.actions.includes(action)) {
                 next();
             } else {
+
+
                 res.status(403).json('Action not allowed');
+
             }
         } catch (error) {
             next(error);
@@ -30,3 +34,26 @@ export const hasPermission = (action) => {
         }
     }
 }
+
+export const userHasPermission = () => {
+    return async (req, res, next) => {
+      try {
+         //Find user form the database
+         const user = await UserModel.findById(req.auth.id)
+        // use the user role to find the permission
+         const permission = permissions.find(value => value.role === user.role)
+         if (!permission){
+            return res.status(403).json('No permission found!')
+         }
+         //check if permission actions include action
+         if (permission.action.includes(action)){
+            next();
+         } else{
+            res.json(403).json('Action not allowed!')
+         }
+      } catch (error) {
+        next(error);
+      }  
+    }
+}
+

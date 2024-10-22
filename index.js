@@ -25,4 +25,4 @@ app.use(userRouter);
 // listen for incoming request
 app.listen(3310, () => {
     console.log('app is listening on port 3310');
-})
+});

@@ -1,6 +1,6 @@
 //import express router
 import { Router } from "express";
-import { userAds, userRegister, userLogin, userLogout } from "../controllers/user.js";
+import { userAds, userRegister, userLogin, userLogout, userAd } from "../controllers/user.js";
 import { isAuthenticated, userHasPermission } from "../middlewares/auth.js";
 
 
@@ -9,7 +9,7 @@ const userRouter = Router();
 
 //define user routes : get all and get one
 userRouter.get('/users/ads', userAds);
-userRouter.get('./users/ad',);
+userRouter.get('./users/ad', userAd);
 userRouter.post('/users/register', userRegister);
 userRouter.post('/users/login', userLogin);
 userRouter.post('/users/logout', isAuthenticated, userLogout);

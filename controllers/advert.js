@@ -75,7 +75,7 @@ export const updateAdvert = async (req, res, next) => {
     try {
         const advert = await AdvertModel.findOneAndUpdate(
             {
-                id: req.params.id,
+                _id: req.params.id,
                 vendor: req.auth.id
 
             },

@@ -71,12 +71,15 @@ try {
 }
 };
 
-export const userLogout = ()=> {
-    return res.status(200).json({ message: "Logout successful. See you later!" })
-
-    // expressJwt({ secret: process.env.JWT_SECRET, algorithms: ['HS256'] }), (req, res) => {
-    // Logout logic here
-    res.status(200).send({ message: 'Logged out successfully' })
+export const userLogout = (req, res, next)=> {
+    try {
+        return res.status(200).json({ message: "Logout successful. See you later!" })
+    
+        // expressJwt({ secret: process.env.JWT_SECRET, algorithms: ['HS256'] }), (req, res) => {
+        // Logout logic here
+    } catch (error) {
+        next(error);
+    }
 }
 
 

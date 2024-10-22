@@ -10,6 +10,7 @@ const vendorSchema = new Schema({
     location: {type: String, required: true},
     email: {type: String, required: true, unique: true},
     password: {type: String, required: true },
+    role: { type: String, enum: ['vendor', 'user'], default: 'vendor' }
 }, {
     timestamps: true
 });

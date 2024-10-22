@@ -4,8 +4,9 @@ import Joi from "joi";
 export const registerVendorValidator= Joi.object({
     firstname: Joi.string().required(),
     lastname: Joi.string().required(),
-    location: Joi.string().required(),
     email:Joi.string().email().required(),
+    phone: Joi.string(),
+    location: Joi.string().required(),
     password: Joi.string().required()
 });
 

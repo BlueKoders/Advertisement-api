@@ -30,7 +30,7 @@ export const getAdverts = async (req, res, next) => {
         //  fetch adverts from database
         const adverts = await AdvertModel
             .find(JSON.parse(filter))
-            .sort(json.parse(sort))
+            .sort(JSON.parse(sort))
             .limit(limit)
             .skip(skip);
         // return response

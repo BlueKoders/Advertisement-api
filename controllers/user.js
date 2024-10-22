@@ -102,7 +102,7 @@ export const  userAds = async (req, res, next) => {
 
 export const userAd = async (req, res, next)=>{
 try {
-    const advertId = req.cookies.advertId;
+    const advertId = req.params.id;
     if (!advertId) return res.status(400).json({ message: 'No advert ID found' });
 
     await AdvertModel.findById(advertId)

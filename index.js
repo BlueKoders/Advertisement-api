@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import vendorRouter from './routes/vendor.js';
 import userRouter from './routes/user.js';
-
+import advertRouter from './routes/advert.js';
 
 
 // connect to database
@@ -20,6 +20,7 @@ app.use(cors());
 // use routes
 app.use(vendorRouter);
 app.use(userRouter);
+app.use(advertRouter);
 
 
 // listen for incoming request

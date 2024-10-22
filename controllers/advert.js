@@ -71,10 +71,22 @@ export const getAdvert = async (req, res, next) => {
   }
 
 
-export const updateAdvert = (req, res, next) => {
+export const updateAdvert = async (req, res, next) => {
     try {
-        const { } = updateAdvertValidator
-        res.json('Advert updated');
+        const advert = await AdvertModel.findOneAndUpdate(
+            {
+                id: req.params.id,
+                vendor: req.auth.id
+
+            },
+            value,
+            {new:true}
+        );
+        if (!advert){
+            return res.status(404).json('Advert not found');
+        }
+        //respond to the update request
+        res.status(201).json('Advert updated');
     } catch (error) {
         next(error)
 

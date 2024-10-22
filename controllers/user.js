@@ -88,14 +88,25 @@ export const  userAds = async (req, res, next) => {
       try {
           const { filter = "{}", sort = "{}", limit = 10, skip = 0 } = req.query; //filter search
           //fetch ads from database
-          const ads = await AdvertModel.find(JSON.parse(filter))
+          const adverts = await AdvertModel.find(JSON.parse(filter))
               .find(JSON.parse(filter))
               .sort(JSON.parse(sort))
           .limit(limit)
           .skip()
         //respond to user
-          res.status(200).json(ads)
+          res.status(200).json(adverts)
       } catch (error) {
         next(error);
       }
+}
+
+export const userAd = async ()=>{
+try {
+    const {id} = req.params//destructing Adverts from db
+    const advert = await AdvertModel.findById(id);
+    //respond to request
+    res.status(200).json(advert)
+} catch (error) {
+    next(error)
+}
 }

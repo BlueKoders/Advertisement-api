@@ -18,7 +18,7 @@ vendorRouter.get('/vendors/me', isAuthenticated, hasPermission('get_profile'), g
 
 vendorRouter.post('/vendors/logout', isAuthenticated, logoutVendor)
 
-vendorRouter.patch('/vendors/me', isAuthenticated, hasPermission('update_profile'), updateProfile)
+vendorRouter.patch('/vendors/me/:id', isAuthenticated, hasPermission('update_profile'), updateProfile)
 
 
 // export default

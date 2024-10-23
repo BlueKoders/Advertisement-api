@@ -13,8 +13,9 @@ export const addAdvertValidator = Joi.object({
 
 export const updateAdvertValidator = Joi.object({
     title: Joi.string(),
-    description: Joi.string(),
+    location: Joi.string(),
     description: Joi.string(),
     image: Joi.string(),
-    price: Joi.string()
+    price: Joi.string(),
+    category: Joi.string()
 });

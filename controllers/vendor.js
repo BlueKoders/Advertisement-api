@@ -95,7 +95,7 @@ export const updateProfile = async (req, res, next) => {
     // validate vendor input
     const { error, value } = updateProfileValidator.validate({
       ...req.body,
-      avatar: req.file?.filename
+      // avatar: req.file?.filename
     });
     if (error) {
       return res.status(422).json(error);

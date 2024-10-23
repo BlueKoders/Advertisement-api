@@ -95,6 +95,7 @@ export const updateProfile = async (req, res, next) => {
     // validate vendor input
     const { error, value } = updateProfileValidator.validate({
       ...req.body,
+      // profile avatar not in use
       // avatar: req.file?.filename
     });
     if (error) {

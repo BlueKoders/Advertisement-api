@@ -9,7 +9,7 @@ const userRouter = Router();
 
 //define user routes : get all and get one
 userRouter.get('/users/ads', userAds);
-userRouter.get('/users/:id', userAd);// test- failed
+userRouter.get('/users/:id', userAd);// works by replacing id with db post id.
 userRouter.post('/users/register', userRegister);
 userRouter.post('/users/login', userLogin);
 userRouter.post('/users/logout', isAuthenticated, userLogout);

@@ -103,7 +103,7 @@ export const updateProfile = async (req, res, next) => {
     // update vendor
     await VendorModel.findByIdAndUpdate(req.auth.id, value);
     // respond to request
-    res.json('vendor profile updated');
+    res.json('Vendor profile updated');
   } catch (error) {
     next(error);
 

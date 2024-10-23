@@ -31,7 +31,6 @@ export const registerVendor = async (req, res, next) => {
     res.json('vendor registered');
   } catch (error) {
     next(error);
-
   }
 }
 

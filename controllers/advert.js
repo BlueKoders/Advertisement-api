@@ -59,9 +59,14 @@ export const countAdverts = async (req, res, next) => {
 
 export const getAdvert = async (req, res, next) => {
     try {
-        const {id} =req.params;
         // get advert by id from database
-        const todo = await AdvertModel.findById(id);
+        const {id} =req.params;
+        //find advert from database
+        const advert = await AdvertModel.findById(id);
+        /// if not advert message
+        if (!advert) {
+            return res.status(404).json({ message: 'Advert not found' });
+        }
         // respond to request
         res.json(advert);
     } catch (error) {

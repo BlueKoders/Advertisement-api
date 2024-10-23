@@ -5,8 +5,8 @@ import { toJSON } from "@reis/mongoose-to-json";
 
 
 const vendorSchema = new Schema({
-    firstName: {type: String, required: true},
-    lastName: {type: String, required: true},
+    firstname: {type: String, required: true},
+    lastname: {type: String, required: true},
     email: {type: String, required: true, unique: true},
     phone: {type: String},
     location: {type: String, required: true},

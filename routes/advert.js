@@ -11,13 +11,13 @@ const advertRouter = Router();
 // define routes
 advertRouter.get('/adverts/count', countAdverts) //NOT TO BE TESTED// PROBABLY NOT SURE
 
-advertRouter.post('/adverts', advertImageUpload.single('image'), isAuthenticated, hasPermission('add_ads'), addAdvert)// TEST SUCCESSFUL
+advertRouter.post('/adverts', advertImageUpload.single('image'), isAuthenticated, hasPermission('add_ads'), addAdvert)// TESTING SUCCESSFUL
 
-advertRouter.get('/adverts/:id', getAdvert); //TEST FAILED
+advertRouter.get('/adverts/:id', getAdvert); //TESTING SUCCESSFUL
 
-advertRouter.get('/adverts', getAdverts);//TEST SUCCESSFUL
+advertRouter.get('/adverts', getAdverts);//TESTING SUCCESSFUL
 
-advertRouter.patch('/adverts/:id', isAuthenticated, hasPermission('update_ads'), updateAdvert); //TEST FAILED
+advertRouter.patch('/adverts/:id', isAuthenticated, hasPermission('update_ads'), updateAdvert); //TESTING FAILED 401
 
 advertRouter.delete('/adverts/:id', isAuthenticated, hasPermission('delete_ads'), deleteAdvert);
 

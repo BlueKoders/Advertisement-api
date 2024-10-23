@@ -84,7 +84,7 @@ export const updateAdvert = async (req, res, next) => {
                 vendor: req.auth.id
 
             },
-            value,
+            req.body,
             {new:true}
         );
         if (!advert){

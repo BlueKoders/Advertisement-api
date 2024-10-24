@@ -99,7 +99,7 @@ export const updateAdvert = async (req, res, next) => {
             return res.status(404).json('Advert not found!');
         }
         //respond to the update request
-        res.status(201).json('Advert updated!');
+        res.status(201).json(advert);
     } catch (error) {
         next(error)
 

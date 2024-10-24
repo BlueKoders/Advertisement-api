@@ -19,7 +19,7 @@ advertRouter.get('/adverts', getAdverts);//TESTING SUCCESSFUL
 
 advertRouter.patch('/adverts/:id', isAuthenticated, hasPermission('update_ads'), updateAdvert); //TESTING FAILED 401
 
-advertRouter.delete('/adverts/:id', isAuthenticated, hasPermission('delete_ads'), deleteAdvert);
+advertRouter.delete('/adverts/:id', isAuthenticated, hasPermission('delete_ads'), deleteAdvert); 
 
 
 // export router

@@ -17,7 +17,7 @@ advertRouter.get('/adverts/:id', getAdvert); //TESTING SUCCESSFUL
 
 advertRouter.get('/adverts', getAdverts);//TESTING SUCCESSFUL
 
-advertRouter.patch('/adverts/:id', isAuthenticated, hasPermission('update_ads'), updateAdvert); //TESTING FAILED 401
+advertRouter.patch('/adverts/:id', isAuthenticated, hasPermission('update_ads'), advertImageUpload.single('image'), updateAdvert); //TESTING  successful
 
 advertRouter.delete('/adverts/:id', isAuthenticated, hasPermission('delete_ads'), deleteAdvert); 
 

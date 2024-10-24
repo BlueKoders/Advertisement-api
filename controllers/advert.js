@@ -45,7 +45,7 @@ export const getAdverts = async (req, res, next) => {
 
 export const countAdverts = async (req, res, next) => {
     try {
-        const { } = req.query;
+        const { filter = "{ }" } = req.query;
         // count adverts in database
         const count = await AdvertModel.countDocuments(JSON.parse(filter));
         // respond to request
@@ -60,7 +60,7 @@ export const countAdverts = async (req, res, next) => {
 export const getAdvert = async (req, res, next) => {
     try {
         // get advert by id from database
-        const {id} =req.params;
+        const { id } = req.params;
         //find advert from database
         const advert = await AdvertModel.findById(id);
         /// if not advert message
@@ -70,10 +70,10 @@ export const getAdvert = async (req, res, next) => {
         // respond to request
         res.json(advert);
     } catch (error) {
-      next(error);
-      
+        next(error);
+
     }
-  }
+}
 
 
 export const updateAdvert = async (req, res, next) => {
@@ -93,9 +93,9 @@ export const updateAdvert = async (req, res, next) => {
 
             },
             req.body,
-            {new:true}
+            { new: true }
         );
-        if (!advert){
+        if (!advert) {
             return res.status(404).json('Advert not found!');
         }
         //respond to the update request
@@ -109,14 +109,14 @@ export const updateAdvert = async (req, res, next) => {
 
 export const deleteAdvert = async (req, res, next) => {
     try {
-     // delete an advert  and all advert from database
-     const deleteAdvert = await  AdvertModel.deleteOne(req.body.id)
-     if (!deleteAdvert){
-        return res.status(404).json('Advert already deleted!')
-     }
-      res.json('Advert deleted!');
+        // delete an advert  and all advert from database
+        const deleteAdvert = await AdvertModel.deleteOne(req.body.id)
+        if (!deleteAdvert) {
+            return res.status(404).json('Advert already deleted!')
+        }
+        res.json('Advert deleted!');
     } catch (error) {
-     next(error);
-     
+        next(error);
+
     }
- }
+}

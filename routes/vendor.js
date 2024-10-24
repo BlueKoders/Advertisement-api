@@ -9,16 +9,21 @@ const vendorRouter = Router();
 
 
 // define routes
-vendorRouter.post('/vendors/register', registerVendor)
-
-vendorRouter.post('/vendors/login', loginVendor)
+vendorRouter.post('/vendors/register', registerVendor) //TESTING SUCCESSFUL
 
 
-vendorRouter.get('/vendors/me', isAuthenticated, hasPermission('get_profile'), getProfile)
+vendorRouter.post('/vendors/login', loginVendor) //TESTING SUCCESSFUL
 
-vendorRouter.post('/vendors/logout', isAuthenticated, logoutVendor)
 
-vendorRouter.patch('/vendors/me/:id', isAuthenticated, hasPermission('update_profile'), updateProfile)
+
+vendorRouter.get('/vendors/me', isAuthenticated, hasPermission('get_profile'), getProfile) //TESTING SUCCESSFUL
+
+
+vendorRouter.post('/vendors/logout', isAuthenticated, logoutVendor) //TESTING SUCCESSFUL
+
+
+vendorRouter.patch('/vendors/me/:id', isAuthenticated, hasPermission('update_profile'), updateProfile)//TESTING SUCCESSFUL
+
 
 
 // export default

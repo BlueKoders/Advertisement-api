@@ -8,11 +8,16 @@ import { isAuthenticated, userHasPermission } from "../middlewares/auth.js";
 const userRouter = Router();
 
 //define user routes : get all and get one
-userRouter.get('/users/ads', userAds);
-userRouter.get('/users/:id', userAd);// works by replacing id with db post id.
-userRouter.post('/users/register', userRegister);
-userRouter.post('/users/login', userLogin);
-userRouter.post('/users/logout', isAuthenticated, userLogout);
+userRouter.get('/users/ads', userAds); //TESTING SUCCESSFUL
+
+userRouter.get('/users/:id', userAd);// works by replacing id with db post id. //TESTING SUCCESSFUL
+
+userRouter.post('/users/register', userRegister); //TESTING SUCCESSFUL
+
+userRouter.post('/users/login', userLogin); //TESTING SUCCESSFUL
+
+userRouter.post('/users/logout', isAuthenticated, userLogout); //TESTING SUCCESSFUL
+
 
 //export user 
 export default userRouter;

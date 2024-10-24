@@ -9,7 +9,7 @@ import { advertImageUpload } from "../middlewares/uploads.js";
 const advertRouter = Router();
 
 // define routes
-advertRouter.get('/adverts/count', countAdverts) //NOT TO BE TESTED//
+advertRouter.get('/adverts/count', countAdverts) // TESTING SUCCESSFUL//
 
 advertRouter.post('/adverts', isAuthenticated, hasPermission('add_ads'), advertImageUpload.single('image'), addAdvert)// TESTING SUCCESSFUL
 

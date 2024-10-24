@@ -2,6 +2,7 @@ import { VendorModel } from "../models/vendor.js";
 import { registerVendorValidator, loginVendorValidator, updateProfileValidator } from "../validators/vendor.js";
 import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken"
+import { AdvertModel } from "../models/advert.js"
 
 
 
@@ -80,6 +81,27 @@ export const getProfile = async (req, res, next) => {
       .select({ password: false });
     // respond to request
     res.json(vendor);
+  } catch (error) {
+    next(error);
+  }
+}
+
+///controller for vendors to find their ads
+export const getVendorAdverts = async(req, res, next)=>{
+  try {
+    const { filter = "{}", sort = "{}", limit = 10, skip = 0 } = req.query;
+    //  fetch adverts from database
+    const adverts = await AdvertModel
+      .find({
+        ...JSON.parse(filter),
+        vendor: req.auth.id
+      })
+      .sort(JSON.parse(sort))
+      .limit(limit)
+      .skip(skip);
+    // return response
+    res.status(200).json(adverts)
+
   } catch (error) {
     next(error);
   }

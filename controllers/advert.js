@@ -110,7 +110,11 @@ export const updateAdvert = async (req, res, next) => {
 export const deleteAdvert = async (req, res, next) => {
     try {
         // delete an advert  and all advert from database
-        const deleteAdvert = await AdvertModel.deleteOne(req.body.id)
+        const deleteAdvert = await AdvertModel.findOneAndDelete(
+            {
+                _id: req.params.id,
+                vendor: req.auth.id
+            })
         if (!deleteAdvert) {
             return res.status(404).json('Advert already deleted!')
         }

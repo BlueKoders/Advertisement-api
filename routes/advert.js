@@ -1,5 +1,5 @@
 import { Router } from "express";
-import {addAdvert, countAdverts, deleteAdvert, getAdvert, getAdverts, updateAdvert, } from "../controllers/advert.js";
+import { addAdvert, countAdverts, deleteAdvert, getAdvert, getAdverts, updateAdvert, } from "../controllers/advert.js";
 import { hasPermission, isAuthenticated } from "../middlewares/auth.js";
 import { advertImageUpload } from "../middlewares/uploads.js";
 
@@ -9,9 +9,9 @@ import { advertImageUpload } from "../middlewares/uploads.js";
 const advertRouter = Router();
 
 // define routes
-advertRouter.get('/adverts/count', countAdverts) //NOT TO BE TESTED// PROBABLY NOT SURE
+advertRouter.get('/adverts/count', countAdverts) //NOT TO BE TESTED//
 
-advertRouter.post('/adverts', advertImageUpload.single('image'), isAuthenticated, hasPermission('add_ads'), addAdvert)// TESTING SUCCESSFUL
+advertRouter.post('/adverts', isAuthenticated, hasPermission('add_ads'), advertImageUpload.single('image'), addAdvert)// TESTING SUCCESSFUL
 
 advertRouter.get('/adverts/:id', getAdvert); //TESTING SUCCESSFUL
 

@@ -17,7 +17,7 @@ export const addAdvert = async (req, res, next) => {
             vendor: req.auth.id
         });
         // respond to request
-        res.status(201).json('Advert was added');
+        res.status(201).json('Advert was added!');
     } catch (error) {
         next(error);
 
@@ -65,7 +65,7 @@ export const getAdvert = async (req, res, next) => {
         const advert = await AdvertModel.findById(id);
         /// if not advert message
         if (!advert) {
-            return res.status(404).json({ message: 'Advert not found' });
+            return res.status(404).json({ message: 'Advert not found!' });
         }
         // respond to request
         res.json(advert);
@@ -78,6 +78,14 @@ export const getAdvert = async (req, res, next) => {
 
 export const updateAdvert = async (req, res, next) => {
     try {
+        // validate vendor inputs
+        const { error, value } = updateAdvertValidator.validate({
+            ...req.body,
+            image: req.file?.filename
+        });
+        if (error) {
+            return res.status(422).json(error)
+        }
         const advert = await AdvertModel.findOneAndUpdate(
             {
                 _id: req.params.id,
@@ -88,10 +96,10 @@ export const updateAdvert = async (req, res, next) => {
             {new:true}
         );
         if (!advert){
-            return res.status(404).json('Advert not found');
+            return res.status(404).json('Advert not found!');
         }
         //respond to the update request
-        res.status(201).json('Advert updated');
+        res.status(201).json('Advert updated!');
     } catch (error) {
         next(error)
 
@@ -102,8 +110,11 @@ export const updateAdvert = async (req, res, next) => {
 export const deleteAdvert = async (req, res, next) => {
     try {
      // delete an advert  and all advert from database
-     const deleteAllAdverts = await  AdvertModel.deleteOne(req.body.id)
-      res.json('Advert deleted');
+     const deleteAdvert = await  AdvertModel.deleteOne(req.body.id)
+     if (!deleteAdvert){
+        return res.status(404).json('Advert already deleted!')
+     }
+      res.json('Advert deleted!');
     } catch (error) {
      next(error);
      

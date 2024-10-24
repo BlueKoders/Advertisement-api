@@ -14,6 +14,9 @@ export const hasPermission = (action) => {
         try {
             // find vendor from database
             const vendor = await VendorModel.findById(req.auth.id);
+            if(!vendor) {
+                res.status(404).json("No vendor Found")
+            }
             // use the vendor role to find their permission
             const permission = permissions.find(value => value.role === vendor.role);
             if (!permission) {

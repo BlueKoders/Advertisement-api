@@ -24,6 +24,8 @@ app.use(advertRouter);
 
 
 // listen for incoming request
-app.listen(3310, () => {
-    console.log('app is listening on port 3310');
+const PORT = 3310
+app.listen(PORT, () => {
+    console.log(`App listening on port: ${PORT}`);
+    
 });
